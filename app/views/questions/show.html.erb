@@ -4,3 +4,14 @@
 <p>
   <%= @question.description %>
 </p>
+<table>
+  <td>
+  <%= link_to 'Edit', edit_question_path %>
+  </td>
+  <td>
+    Delete
+  </td>
+  <td>
+    <%= link_to 'Back to Questions', questions_path %>  
+  </td>
+</table>
