@@ -17,6 +17,12 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  def update
+    @question = Question.find(params[:id])
+    @question.update
+    redirect_to @question
+  end
+
   private
 
   def permit_params
