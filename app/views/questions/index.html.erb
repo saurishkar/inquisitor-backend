@@ -1,0 +1,27 @@
+<h1>Questions</h1>
+<table>
+  <thead>
+    <td>#</td>
+    <td>Question Title</td>
+    <td>Question description</td>
+    <td></td>
+  </thead>
+  <tbody>
+    <% @questions.each_with_index do |question, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>.
+        </td>
+        <td>
+          <%= question.title %>
+        </td>
+        <td>
+          <%= question.description %>
+        </td>
+        <td>
+          <%= link_to 'Show', question_path(question) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
