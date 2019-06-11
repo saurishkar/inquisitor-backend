@@ -1,0 +1,19 @@
+<%= render 'home/header' %>
+<h1>Users</h1>
+
+<table>
+  <thead>
+    <th>First Name </th>
+    <th>Last Name </th>
+    <th>Email Address </th>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.firstname %></td>
+      <td><%= user.lastname %></td>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
