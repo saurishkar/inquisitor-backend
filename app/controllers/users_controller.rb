@@ -1,5 +1,7 @@
+require 'json'
 class UsersController < ApplicationController
   include UsersHelper
+  include Api
   def new
     @user = User.new
   end
@@ -32,6 +34,35 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       redirect_to root_path, notice: "Invalid Email or password"
+    end
+  end
+
+  def forgot_password
+    # render 'forgot_password'
+  end
+
+  def send_reset_password_mail
+    user_email = permit_params[:email]
+    url = URI(Rails.application.secrets.pepipost_url)
+    pp_api_key = Rails.application.secrets.pepipost_api_key
+    mail_body = MAILER_TEMPLATES[:reset_password][:body].merge({
+      personalizations: [{recipient: user_email}],
+      content: "Click on the below link to reset your password #{}"
+    })
+    config = {
+      "content-type" => 'application/json',
+      "api_key"      => pp_api_key,
+      "body"         => mail_body.to_json
+    }
+    # render plain: 'Reset password link has been sent to your email'
+
+    response = ApiService.post(url, config)
+    status_code = response.code.to_i
+    if status_code == 200 || status_code == 202
+      redirect_to :forgot_password, alert: "Reset password link has been sent to your email"
+    else
+      flash.now[:alert] = 'FAILED'
+      render 'forgot_password'
     end
   end
 

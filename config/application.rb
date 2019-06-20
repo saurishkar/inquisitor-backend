@@ -16,4 +16,10 @@ module InquisitorBackend
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
   end
+  
+  begin
+    SECRETS = YAML.load_file("#{Rails.root}/config/secrets.yml")[Rails.env].symbolize_keys
+  rescue StandardError => _
+    SECRETS = { pepipost_api_key: '', pepipost_url: '' }
+  end
 end

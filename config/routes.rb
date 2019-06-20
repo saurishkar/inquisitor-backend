@@ -7,5 +7,8 @@ Rails.application.routes.draw do
     get '/logout' => 'users#logout'
   end
   post 'users/login' => 'users#login'
+  get '/forgot_password' => 'users#forgot_password'
+  post '/forgot_password', to: 'users#send_reset_password_mail', as: 'send_reset_password_mail'
+  get '/reset_password' => 'users#reset_password'
   root 'home#index'
 end
