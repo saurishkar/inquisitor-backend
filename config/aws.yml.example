@@ -1,0 +1,23 @@
+development:
+  access_key_id: 'xxxxxx'
+  secret_access_key: 'xxxxx'
+  s3_region: 'xxxxxx'
+  bucket: 'xxxxx'
+
+staging:
+  access_key_id: 'xxxxxx'
+  secret_access_key: 'xxxxx'
+  s3_region: 'xxxxxx'
+  bucket: 'xxxxx'
+
+uat:
+  access_key_id: 'xxxxxx'
+  secret_access_key: 'xxxxx'
+  s3_region: 'xxxxxx'
+  bucket: 'xxxxx'
+
+production:
+  access_key_id: 'xxxxxx'
+  secret_access_key: 'xxxxx'
+  s3_region: 'xxxxxx'
+  bucket: 'xxxxx'
