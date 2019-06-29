@@ -5,6 +5,7 @@ set :application, "inquisitor_admin"
 set :repo_url, "git@github.com:saurishkar/inquisitor-backend.git"
 set :branch, 'master'
 set :use_sudo, true
+set :deploy_to, '/var/www/inquisitor-backend'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -23,7 +24,7 @@ set :use_sudo, true
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml"
+append :linked_files, "config/database.yml", "config/cable.yml", "config/secrets.yml", "config/aws.yml"
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
