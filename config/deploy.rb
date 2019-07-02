@@ -6,6 +6,7 @@ set :repo_url, "git@github.com:saurishkar/inquisitor-backend.git"
 set :branch, 'master'
 set :use_sudo, true
 set :deploy_to, '/var/www/inquisitor-backend'
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets')
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
