@@ -1,8 +1,8 @@
-<%= render 'header' %>
+<%= render 'admin/home/header' %>
 <div class="alert-message">
   <%= flash.notice %>
 </div>
-<%= form_with scope: :user, url: users_login_path, local: true do |form| %>
+<%= form_with scope: :user, url: admin_users_login_path, local: true do |form| %>
   <div class="user-login-form">
     <div>
       <%= form.label :email %>
