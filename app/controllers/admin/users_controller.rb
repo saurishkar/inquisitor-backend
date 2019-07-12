@@ -12,11 +12,15 @@ module Admin
       @users = User.all
     end
 
+    def show
+      @user = User.find(params[:id])
+    end
+
     def create
       @user = User.new(permit_params)
       if @user.save
         set_user_session
-        redirect_to users_path
+        redirect_to admin_users_path
       else
         render 'new'
       end
@@ -26,16 +30,16 @@ module Admin
       if params[:user_id] == session[:current_user].to_s
         reset_user_session
       end
-      redirect_to root_path
+      redirect_to admin_login_path
     end
 
     def login
       if User.authenticate(permit_params[:email], permit_params[:password])
         @user = User.find_by_email(permit_params[:email])
         set_user_session
-        redirect_to users_path
+        redirect_to admin_users_path
       else
-        redirect_to admin_home_index_path, notice: "Invalid Email or password"
+        redirect_to admin_login_path, notice: "Invalid Email or password"
       end
     end
 
