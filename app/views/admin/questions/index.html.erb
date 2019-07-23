@@ -1,6 +1,11 @@
 <%= render 'admin/home/header' %>
 <div class="container">
-  <h1 class="title">Questions</h1>
+  <div class="row mb-4">
+    <div class="col-md-8"><h1 class="title">Questions</h1></div>
+    <div class="col-md-4">
+      <a href="/admin/questions/new" class="btn btn-primary float-right rounded-0">New question</a>
+    </div>
+  </div>
   <table class="table">
     <thead>
       <th>#</th>
