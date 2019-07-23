@@ -1,0 +1,20 @@
+<%= render 'admin/home/header' %>
+<div class="container">
+  <h1>
+    <%= @question.title %>
+  </h1>
+  <p>
+    <%= @question.description %>
+  </p>
+  <table class="table">
+    <td>
+    <%= link_to 'Edit', edit_admin_question_path %>
+    </td>
+    <td>
+      Delete
+    </td>
+    <td>
+      <%= link_to 'Back to Questions', admin_questions_path %>  
+    </td>
+  </table>
+</div>
