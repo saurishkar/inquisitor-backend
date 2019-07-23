@@ -6,8 +6,10 @@ module Admin
 
     def create
       @question = Question.new(permit_params)
-      @question.save
-      redirect_to @question
+      if @question.save
+        redirect_to admin_question_path :id => @question.id
+      else
+      end
     end
 
     def show
@@ -21,7 +23,7 @@ module Admin
     def update
       @question = Question.find(params[:id])
       @question.update
-      redirect_to @question
+      redirect_to admin_question_path :id => @question.id
     end
 
     private

@@ -1,12 +1,17 @@
-<h1>Edit Question</h1>
-<%= form_with scope: :question, url: questions_path, local: true do |form| %>
-  <p>
-    <%= form.label :question_title %>
-    <%= form.text_field :title %>
-  </p>
-  <p>
-    <%= form.label :question_description %>
-    <%= form.text_area :description %>
-  </p>
-  <%= form.submit %>
-<% end %>
+<%= render 'admin/home/header' %>
+<div class="container">
+  <h1 class="mb-4">Edit Question</h1>
+  <%= form_with scope: :question, url: admin_questions_path, local: true do |form| %>
+    <div class="col-md-6 form">
+      <p>
+        <%= form.label :question_title %>
+        <%= form.text_field :title, :class => 'form-control' %>
+      </p>
+      <p>
+        <%= form.label :question_description %>
+        <%= form.text_area :description, :class => 'form-control', :rows => 5 %>
+      </p>
+      <%= form.submit 'Update Question', :class => 'btn btn-success' %>
+  </div>
+  <% end %>
+</div>
