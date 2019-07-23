@@ -22,7 +22,7 @@ module Admin
 
     def update
       @question = Question.find(params[:id])
-      @question.update
+      @question.update(permit_params)
       redirect_to admin_question_path :id => @question.id
     end
 

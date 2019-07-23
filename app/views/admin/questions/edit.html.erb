@@ -1,7 +1,7 @@
 <%= render 'admin/home/header' %>
 <div class="container">
   <h1 class="mb-4">Edit Question</h1>
-  <%= form_with scope: :question, url: admin_questions_path, local: true do |form| %>
+  <%= form_with scope: :question, url: admin_question_path, local: true, :method => :put do |form| %>
     <div class="col-md-6 form">
       <p>
         <%= form.label :question_title %>
