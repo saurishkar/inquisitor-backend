@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
   <a class="navbar-brand ml-5" href="/">Inquisitor Admin</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
             <a class="dropdown-item" href="/admin/answers">All Answers</a>
             <a class="dropdown-item" href="#">Change Password</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-danger" href="/users/<%= session[:current_user] %>/logout">Logout</a>
+            <a class="dropdown-item text-danger" href="/admin/users/<%= session[:current_user] %>/logout">Logout</a>
           </div>
         </li>
       <% end %>

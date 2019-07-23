@@ -19,7 +19,6 @@ module Admin
     def create
       @user = User.new(permit_params)
       if @user.save
-        set_user_session
         redirect_to admin_users_path
       else
         render 'new'

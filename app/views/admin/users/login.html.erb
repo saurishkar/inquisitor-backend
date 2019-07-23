@@ -1,19 +1,21 @@
 <%= render 'admin/home/header' %>
-<div class="alert-message">
-  <%= flash.notice %>
-</div>
-<%= form_with scope: :user, url: admin_login_path, local: true do |form| %>
-  <div class="user-login-form">
-    <div>
-      <%= form.label :email %>
-      <%= form.email_field :email %>
-    </div>
-    <div>
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
-    <div>
-      <%= form.submit 'Login' %>
-    </div>
+<div class="container t-a-c mt-5">
+  <div class="alert-message">
+    <%= flash.notice %>
   </div>
-<% end %> 
+  <div class="user-login-form w-25 p-3 mx-auto">
+    <%= form_with scope: :user, url: admin_login_path, local: true do |form| %>
+    <div class="mb-2">
+      <%= form.label :email %>
+      <%= form.email_field :email, :class => 'form-control' %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :password %>
+      <%= form.password_field :password, :class => 'form-control' %>
+    </div>
+    <div>
+      <%= form.submit 'Login', :class => 'btn btn-success rounded-0 float-right' %>
+    </div>
+    <% end %> 
+  </div>
+</div>
