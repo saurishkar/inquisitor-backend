@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class HomeController < ApplicationController
     before_action :check_auth, only: :index
@@ -9,9 +11,7 @@ module Admin
     private
 
     def check_auth
-      if session[:current_user]
-        redirect_to admin_users_path
-      end
+      redirect_to admin_users_path if session[:current_user]
     end
   end
 end
