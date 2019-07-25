@@ -2,4 +2,4 @@
 
 Inquisitor Admin
 
-https://inquisitor-admin.herokuapp.com/
+admin.inquisitor.tk
