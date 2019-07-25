@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class QuestionsController < ApplicationController
     def index
@@ -6,10 +8,7 @@ module Admin
 
     def create
       @question = Question.new(permit_params)
-      if @question.save
-        redirect_to admin_question_path :id => @question.id
-      else
-      end
+      redirect_to admin_question_path id: @question.id if @question.save
     end
 
     def show
@@ -23,7 +22,7 @@ module Admin
     def update
       @question = Question.find(params[:id])
       @question.update(permit_params)
-      redirect_to admin_question_path :id => @question.id
+      redirect_to admin_question_path id: @question.id
     end
 
     private

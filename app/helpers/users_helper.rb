@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UsersHelper
   def set_user_session
     session[:current_user] = @user.id
