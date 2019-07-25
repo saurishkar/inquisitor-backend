@@ -1,4 +1,4 @@
 # README
 
-[Inquisitor Admin](admin.inquisitor.tk)
+[Inquisitor Admin](http://admin.inquisitor.tk)
 
