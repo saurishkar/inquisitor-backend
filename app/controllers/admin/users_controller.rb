@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 module Admin
   class UsersController < ApplicationController
@@ -26,9 +28,7 @@ module Admin
     end
 
     def logout
-      if params[:user_id] == session[:current_user].to_s
-        reset_user_session
-      end
+      reset_user_session if params[:user_id] == session[:current_user].to_s
       redirect_to admin_login_path
     end
 
@@ -38,7 +38,7 @@ module Admin
         set_user_session
         redirect_to admin_users_path
       else
-        redirect_to admin_login_path, notice: "Invalid Email or password"
+        redirect_to admin_login_path, notice: 'Invalid Email or password'
       end
     end
 
@@ -50,21 +50,21 @@ module Admin
       user_email = permit_params[:email]
       url = URI(Rails.application.secrets.pepipost_url)
       pp_api_key = Rails.application.secrets.pepipost_api_key
-      mail_body = MAILER_TEMPLATES[:reset_password][:body].merge({
-        personalizations: [{recipient: user_email}],
-        content: "Click on the below link to reset your password #{}"
-      })
+      mail_body = MAILER_TEMPLATES[:reset_password][:body].merge(
+        personalizations: [{ recipient: user_email }],
+        content: 'Click on the below link to reset your password '
+      )
       config = {
-        "content-type" => 'application/json',
-        "api_key"      => pp_api_key,
-        "body"         => mail_body.to_json
+        'content-type' => 'application/json',
+        'api_key' => pp_api_key,
+        'body' => mail_body.to_json
       }
       # render plain: 'Reset password link has been sent to your email'
 
       response = ApiService.post(url, config)
       status_code = response.code.to_i
       if status_code == 200 || status_code == 202
-        redirect_to :forgot_password, alert: "Reset password link has been sent to your email"
+        redirect_to :forgot_password, alert: 'Reset password link has been sent to your email'
       else
         flash.now[:alert] = 'FAILED'
         render 'forgot_password'
@@ -76,6 +76,5 @@ module Admin
     def permit_params
       params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
     end
-
   end
 end

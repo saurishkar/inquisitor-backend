@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: redirect('/admin/login')
@@ -24,7 +26,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-
+      post '/users/token' => 'users#token'
+      post '/users' => 'users#create'
     end
   end
 

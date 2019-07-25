@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uri'
 require 'net/http'
 module Api
@@ -8,19 +10,16 @@ module Api
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       request = Net::HTTP::Post.new(url)
-      request['content-type'] = config["content-type"]
-      request['api_key'] = config["api_key"]
-      request.body = config["body"]
+      request['content-type'] = config['content-type']
+      request['api_key'] = config['api_key']
+      request.body = config['body']
       http.request(request)
     end
 
-    def self.get
-    end
+    def self.get; end
 
-    def self.put
-    end
+    def self.put; end
 
-    def self.patch
-    end
+    def self.patch; end
   end
 end

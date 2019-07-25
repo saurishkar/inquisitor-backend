@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class AnswersController < ApplicationController
     def index
@@ -8,13 +10,10 @@ module Admin
       @answer = Answer.find(params[:id])
     end
 
-    def create
-    end
+    def create; end
 
-    def update
-    end
+    def update; end
 
-    def destroy
-    end
+    def destroy; end
   end
 end
