@@ -6,6 +6,7 @@ module Admin
 
     def index
       @questions = Question.all.select { |q| q.user_id == params[:user_id] }
+      debugger
     end
 
     def index_all
@@ -14,6 +15,7 @@ module Admin
 
     def create
       @question = Question.new(permit_params)
+      @question.user_id = params[:user_id]
       redirect_to admin_user_question_path id: @question.id if @question.save
     end
 
