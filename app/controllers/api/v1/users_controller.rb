@@ -3,7 +3,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      skip_before_action :verify_authenticity_token, only: [:token, :create]
+      skip_before_action :verify_authenticity_token, only: %i[token create]
 
       def token
         @user = User.authenticate(params[:email], params[:password])

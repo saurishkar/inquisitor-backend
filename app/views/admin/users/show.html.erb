@@ -1,19 +1,24 @@
 <%= render 'admin/home/header' %>
 <div class="container">
-  <h1>User Profile</h1>
+  <div class="row mb-5">
+    <div class="col-md-8"><h1>User Profile</h1></div>
+    <div class="col-md-4 text-right">
+      <a class="btn btn-primary rounded-0" href="/admin/users/<%= @user.id %>/questions/new">New Question</a>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-6">
-      <h4>First Name</h4>
+      <h5>First Name</h5>
       <p><%= @user.firstname %></p>
     </div>
     <div class="col-md-6">
-      <h4>Last Name</h4>
+      <h5>Last Name</h5>
       <p><%= @user.lastname %></p>
     </div>
   </div>
   <div  class="row">
     <div class="col-md-6">
-      <h4>Email Address</h4>
+      <h5>Email Address</h5>
       <p><%= @user.email %></p>
     </div>
   </div>
