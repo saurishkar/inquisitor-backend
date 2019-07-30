@@ -3,7 +3,10 @@
   <div class="row mb-5">
     <div class="col-md-8"><h1>User Profile</h1></div>
     <div class="col-md-4 text-right">
-      <a class="btn btn-primary rounded-0" href="/admin/users/<%= @user.id %>/questions/new">New Question</a>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a class="btn btn-primary rounded-1" href="/admin/users/<%= @user.id %>/questions">User Questions</a>
+        <a class="btn btn-success rounded-1" href="/admin/users/<%= @user.id %>/questions/new">New Question</a>
+      </div>
     </div>
   </div>
   <div class="row">
