@@ -1,0 +1,32 @@
+<%= render 'admin/home/header' %>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-8"><h1 class="title">Questions</h1></div>
+  </div>
+  <table class="table">
+    <thead>
+      <th>#</th>
+      <th>Question Title</th>
+      <th>Question description</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <% @questions.each_with_index do |question, index| %>
+        <tr>
+          <td>
+            <%= index + 1 %>.
+          </td>
+          <td>
+            <%= question.title %>
+          </td>
+          <td>
+            <%= question.description %>
+          </td>
+          <td>
+            <a href="/admin/users/<%= question.id %>/questions/<%= question.id %>/">Show</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

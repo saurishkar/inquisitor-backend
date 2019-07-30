@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/login' => 'home#index'
-    resources :questions
-    resources :answers
+    get '/questions' => 'questions#index_all'
     resources :users do
+      resources :questions
+      resources :answers
       get '/logout' => 'users#logout'
     end
     post '/login' => 'users#login'
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/users/token' => 'users#token'
       post '/users' => 'users#create'
+      get '/questions' => 'questions#index'
     end
   end
 
