@@ -6,7 +6,6 @@ module Admin
 
     def index
       @questions = Question.all.select { |q| q.user_id == params[:user_id] }
-      debugger
     end
 
     def index_all

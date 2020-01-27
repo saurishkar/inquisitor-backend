@@ -3,7 +3,7 @@
 module Api
   module V1
     class QuestionsController < ApplicationController
-      before_action authorize, only: %i[create]
+      before_action :authorize, only: %i[create]
 
       def index
         render json: Question.all
