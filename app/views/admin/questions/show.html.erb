@@ -11,10 +11,24 @@
     <%= link_to 'Edit', edit_admin_user_question_path %>
     </td>
     <td>
+      <%= link_to 'Write an answer', new_admin_user_answer_path(:question_id => @question.id) %>
+    </td>
+    <td>
       Delete
     </td>
     <td>
-      <%= link_to 'Back to Questions', admin_user_questions_path %>  
+      <%= link_to 'Back to Questions', admin_questions_path %>  
     </td>
   </table>
+  <% if @question.answers.length > 0 %>
+    <h4>Answers</h4>
+    <% @question.answers.each do |answer| %>
+      <div class="row">
+        <div class="col-md-12"><%= answer.description %></div>
+      </div>
+      <hr />
+    <% end %>
+  <% else %>
+    <h5 class="disabled">No Answers yet</h5>
+  <% end %>
 </div>

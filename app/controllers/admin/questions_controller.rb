@@ -5,7 +5,7 @@ module Admin
     # before_action :authenticate, only: %i[create]
 
     def index
-      @questions = Question.all.select { |q| q.user_id == params[:user_id] }
+      @questions = Question.where(user_id: params[:user_id])
     end
 
     def index_all

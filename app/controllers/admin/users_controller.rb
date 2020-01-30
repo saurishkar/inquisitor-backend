@@ -36,7 +36,7 @@ module Admin
       if User.authenticate(permit_params[:email], permit_params[:password])
         @user = User.find_by_email(permit_params[:email])
         set_user_session
-        redirect_to admin_users_path
+        redirect_to admin_questions_path
       else
         redirect_to admin_login_path, notice: 'Invalid Email or password'
       end

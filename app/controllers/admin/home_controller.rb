@@ -11,7 +11,7 @@ module Admin
     private
 
     def check_auth
-      redirect_to admin_users_path if session[:current_user]
+      redirect_to admin_questions_path if session[:current_user]
     end
   end
 end

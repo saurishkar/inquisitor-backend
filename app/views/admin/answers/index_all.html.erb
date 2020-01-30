@@ -1,0 +1,26 @@
+<%= render 'admin/home/header' %>
+<div class="container">
+  <h1 class="mb-4">Answers</h1>
+  <% if @answers.length > 0 %>
+    <table class="table">
+      <thead>
+        <th>#</th>
+        <th>Question</th>
+        <th>Answer</th>
+        <th>User</th>
+        <th>Last Updated</th>
+      </thead>
+      <% @answers.each_with_index do |answer, idx| %>
+        <tr>
+          <td><%= idx + 1 %></td>
+          <td></td>
+          <td><%= answer.description %></td>
+          <td></td>
+          <td><%= answer.updated_at %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <h5>No records found<h5>
+  <% end %>
+</div>

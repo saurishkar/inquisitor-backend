@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/login' => 'home#index'
     get '/questions' => 'questions#index_all'
+    get '/answers' => 'answers#index_all'
     resources :users do
       resources :questions
       resources :answers
