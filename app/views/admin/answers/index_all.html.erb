@@ -13,9 +13,15 @@
       <% @answers.each_with_index do |answer, idx| %>
         <tr>
           <td><%= idx + 1 %></td>
-          <td></td>
+          <td>
+            <a href="/admin/users/<%= answer.question.user.id %>/questions/<%= answer.question.id %>/">
+              <%= answer.question.title %>
+            </a>
+          </td>
           <td><%= answer.description %></td>
-          <td></td>
+          <td>
+            <a href="/admin/users/<%= answer.user.id %>"><%= answer.user.name %></a>
+          </td>
           <td><%= answer.updated_at %></td>
         </tr>
       <% end %>

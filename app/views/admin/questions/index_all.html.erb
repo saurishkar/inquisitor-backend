@@ -23,7 +23,9 @@
             <%= question.description %>
           </td>
           <td>
-            <a href="/admin/users/<%= question.id %>/questions/<%= question.id %>/">Show</a>
+            <a href="/admin/users/<%= question.user.id %>/questions/<%= question.id %>/">
+              View Answers <span class="badge badge-primary"><%= question.answers.count %></span>
+            </a>
           </td>
         </tr>
       <% end %>

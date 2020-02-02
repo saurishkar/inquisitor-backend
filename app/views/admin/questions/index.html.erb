@@ -1,7 +1,11 @@
 <%= render 'admin/home/header' %>
 <div class="container">
   <div class="row mb-4">
-    <div class="col-md-8"><h1 class="title">Questions</h1></div>
+    <div class="col-md-8">
+      <h1 class="title">
+        <a href="/admin/users/<%= params[:user_id] %>"><%= User.find(params[:user_id]).name %></a> > Questions
+      </h1>
+    </div>
     <div class="col-md-4">
       <%= link_to 'New Question', new_admin_user_question_path, class: "btn btn-primary float-right" %>
     </div>
@@ -12,7 +16,7 @@
         <th>#</th>
         <th>Question Title</th>
         <th>Question description</th>
-        <th>Actions</th>
+        <th colspan="3">Actions</th>
       </thead>
       <tbody>
         <% @questions.each_with_index do |question, index| %>
@@ -27,7 +31,9 @@
               <%= question.description %>
             </td>
             <td>
-              <a href="<%= request.path %>/<%= question.id %>">Show</a>
+              <a href="<%= request.path %>/<%= question.id %>">
+                View answer
+              </a>
             </td>
           </tr>
         <% end %>

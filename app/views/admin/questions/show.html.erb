@@ -3,9 +3,12 @@
   <h1>
     <%= @question.title %>
   </h1>
-  <p>
+  <h5>
     <%= @question.description %>
-  </p>
+  </h5>
+  <small class="text-danger mt-4">
+    <%= link_to "-#{@question.user.name}", admin_user_path(@question.user) %>
+  </small>
   <table class="table">
     <td>
     <%= link_to 'Edit', edit_admin_user_question_path %>
@@ -21,11 +24,14 @@
     </td>
   </table>
   <% if @question.answers.length > 0 %>
-    <h4>Answers</h4>
+    <h3>Answers</h3>
     <% @question.answers.each do |answer| %>
       <div class="row">
         <div class="col-md-12"><%= answer.description %></div>
       </div>
+      <small class="text-danger mb-4 mt-4 ">
+        <%= link_to "-#{answer.user.name}", admin_user_path(answer.user) %>
+      </small>
       <hr />
     <% end %>
   <% else %>

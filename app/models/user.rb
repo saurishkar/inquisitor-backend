@@ -36,4 +36,8 @@ class User < ApplicationRecord
   def self.already_exists?(email)
     true if User.find_by_email(email)
   end
+
+  def name
+    firstname + ' ' + lastname
+  end
 end

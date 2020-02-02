@@ -19,9 +19,17 @@
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.email %></td>
-        <td></td>
-        <td></td>
-        <td><a href="/admin/users/<%= user.id %>">View</a></td>
+        <td>
+          <a href="/admin/users/<%= user.id %>/questions">
+            View Questions <span class="badge badge-dark"><%= user.questions.count %></span>
+          </a>
+        </td>
+        <td>
+          <a href="/admin/users/<%= user.id %>/answers">
+            View Answers <span class="badge badge-dark"><%= user.answers.count %></span>
+        </a>
+        </td>
+        <td><a href="/admin/users/<%= user.id %>">View Profile</a></td>
       </tr>
     <% end %>
     </tbody>

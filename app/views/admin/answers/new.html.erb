@@ -1,6 +1,13 @@
 <%= render 'admin/home/header' %>
 <div class="container">  
   <h1 class="mb-4">Write an answer</h1>
+  <div>
+    <% if @answer.present? && @answer.errors.full_messages.count.positive? %>
+      <% @answer.errors.full_messages.each do |error| %>
+        <div class="alert alert-danger col-md-6"><%= error[:message] %></div>
+      <% end %>
+    <% end %>
+  </div>
   <div class="form">
     <%= form_with scope: :answer, url: admin_user_answers_path(:question_id => params[:question_id]), local: true do |form| %>
       <div class="row">
