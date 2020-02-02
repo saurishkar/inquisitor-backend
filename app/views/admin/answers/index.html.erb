@@ -1,4 +1,24 @@
 <%= render 'admin/home/header' %>
 <div class="container">
   <h1 class="mb-4">Answers</h1>
+  <table class="table">
+    <% if @answers.count > 0 %>
+      <thead>
+        <th>Question title</th>
+        <th>Answer</th>
+        <th>User</th>
+      </thead>
+      <tbody>
+        <% @answers.each do |answer| %>
+          <tr>
+            <td><%= answer.question.title %></td>
+            <td><%= answer.description %></td>
+            <td><%= answer.user.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% else %>
+      <div>No answers yet</div>>
+    <% end %>
+  </table>
 </div>
