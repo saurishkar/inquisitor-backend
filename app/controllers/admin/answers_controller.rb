@@ -19,6 +19,7 @@ module Admin
       @answer.user_id = params[:user_id]
       @answer.question_id = params[:question_id]
       redirect_to admin_answers_path if @answer.save
+      render action: "new"
     end
 
     def update; end
