@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get '/login' => 'home#index'
     get '/questions' => 'questions#index_all'
     get '/answers' => 'answers#index_all'
-    resources :users do
+    resources :users, except: %i[show] do
       resources :questions
       resources :answers
       get '/logout' => 'users#logout'
