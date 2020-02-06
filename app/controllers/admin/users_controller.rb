@@ -14,6 +14,10 @@ module Admin
       @users = User.all
     end
 
+    def show
+      redirect_to edit_admin_user_path
+    end
+
     def create
       @user = User.new(permit_params)
       if @user.save
