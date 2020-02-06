@@ -1,0 +1,49 @@
+<%= render 'admin/home/header' %>
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-md-8"><h1>User Profile</h1></div>
+    <div class="col-md-4 text-right">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <a class="btn btn-primary rounded-1" href="/admin/users/<%= @user.id %>/questions">User Questions</a>
+        <a class="btn btn-success rounded-1" href="/admin/users/<%= @user.id %>/questions/new">New Question</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6"><%= render 'admin/home/flash' %></div>
+  <div class="errors form-group">
+    <% @user.errors.full_messages.each do |msg| %>
+      <div class="text-danger"><%= msg %></div>
+    <% end %>
+  </div>
+  <%= form_with model: [:admin, @user], local: true do |f| %>
+    <div class="row form-group">
+      <div class="col-md-3">
+        <h5>First Name</h5>
+        <%= f.text_field :firstname, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <h5>Last Name</h5>
+        <%= f.text_field :lastname, class: "form-control" %>
+      </div>
+    </div>
+    <div  class="row form-group">
+      <div class="col-md-6">
+        <h5>Email Address</h5>
+        <%= f.text_field :email, class: "form-control", disabled: true %>
+      </div>
+    </div>
+    <div  class="row form-group">
+      <div class="col-md-6">
+        <h5>Password</h5>
+        <%= f.text_field :password, type: "password", value: "", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-md-6">
+        <h5>Password Confirmation</h5>
+        <%= f.text_field :password_confirmation, type: "password", value: "", class: "form-control" %>
+      </div>
+    </div>
+    <%= f.submit "Update", class: "btn btn-success" %>
+  <% end %>
+</div>

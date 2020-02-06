@@ -17,7 +17,7 @@
             <%= session[:current_user_name] %>
           </a>
           <div class="dropdown-menu mr-5" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/admin/users/<%= session[:current_user] %>">My Profile</a>
+            <a class="dropdown-item" href="/admin/users/<%= session[:current_user] %>/edit">My Profile</a>
             <a class="dropdown-item" href="/admin/questions">All Questions</a>
             <a class="dropdown-item" href="/admin/answers">All Answers</a>
             <a class="dropdown-item" href="/admin/users">All Users</a>
