@@ -58,3 +58,19 @@ set :puma_workers, 0
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
+
+namespace :deploy do
+  after :finishing, 'nginx:restart'
+  # after :finishing, 'sidekiq:restart'
+end
+
+namespace :nginx do
+  %w[start stop restart reload].each do |task_name|
+    desc "#{task} Nginx"
+    task task_name do
+      on roles(:web), in: :sequence, wait: 5 do
+        sudo "systemctl #{task_name} nginx"
+      end
+    end
+  end
+end
