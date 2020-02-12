@@ -1,0 +1,7 @@
+<% stylesheet_link_tag "avatar" %>
+
+<span class="user-avatar">
+  <% if session[:current_user_avatar] %>
+    <%= image_tag session[:current_user_avatar], class: "img-thumbnail" %>
+  <% end %>
+</span>

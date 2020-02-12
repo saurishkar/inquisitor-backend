@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   has_many :questions
   has_many :answers
+  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
+                             default_url: '/images/:style/missing.png'
 
   before_save :encrypt_password, :generate_api_key
 
@@ -10,6 +12,7 @@ class User < ApplicationRecord
   validates :firstname, presence: true, length: { maximum: 50 }
   validates :lastname, presence: true, length: { maximum: 50 }
   validates :password, presence: true, length: { minimum: 6 }, confirmation: true
+  validates_attachment_content_type :avatar, content_type: %r{\Aimage\/.*\z}
 
   def encrypt_password
     if password.present?

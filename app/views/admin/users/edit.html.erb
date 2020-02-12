@@ -3,7 +3,7 @@
   <div class="row mb-5">
     <div class="col-md-8"><h1>User Profile</h1></div>
     <div class="col-md-4 text-right">
-      <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group" role="group" aria-label="User actions">
         <a class="btn btn-primary rounded-1" href="/admin/users/<%= @user.id %>/questions">User Questions</a>
         <a class="btn btn-success rounded-1" href="/admin/users/<%= @user.id %>/questions/new">New Question</a>
       </div>
@@ -16,32 +16,40 @@
     <% end %>
   </div>
   <%= form_with model: [:admin, @user], local: true do |f| %>
-    <div class="row form-group">
-      <div class="col-md-3">
-        <h5>First Name</h5>
-        <%= f.text_field :firstname, class: "form-control" %>
-      </div>
-      <div class="col-md-3">
-        <h5>Last Name</h5>
-        <%= f.text_field :lastname, class: "form-control" %>
-      </div>
-    </div>
-    <div  class="row form-group">
+    <div class="row">
       <div class="col-md-6">
-        <h5>Email Address</h5>
-        <%= f.text_field :email, class: "form-control", disabled: true %>
+        <div class="row form-group">
+          <div class="col-md-6">
+            <h5>First Name</h5>
+            <%= f.text_field :firstname, class: "form-control" %>
+          </div>
+          <div class="col-md-6">
+            <h5>Last Name</h5>
+            <%= f.text_field :lastname, class: "form-control" %>
+          </div>
+        </div>
+        <div  class="row form-group">
+          <div class="col-md-12">
+            <h5>Email Address</h5>
+            <%= f.text_field :email, class: "form-control", disabled: true %>
+          </div>
+        </div>
+        <div  class="row form-group">
+          <div class="col-md-12">
+            <h5>Password</h5>
+            <%= f.text_field :password, type: "password", value: "", class: "form-control" %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-12">
+            <h5>Password Confirmation</h5>
+            <%= f.text_field :password_confirmation, type: "password", value: "", class: "form-control" %>
+          </div>
+        </div>
       </div>
-    </div>
-    <div  class="row form-group">
       <div class="col-md-6">
-        <h5>Password</h5>
-        <%= f.text_field :password, type: "password", value: "", class: "form-control" %>
-      </div>
-    </div>
-    <div class="row form-group">
-      <div class="col-md-6">
-        <h5>Password Confirmation</h5>
-        <%= f.text_field :password_confirmation, type: "password", value: "", class: "form-control" %>
+        <div class="img-thumbnail float-right"><%= image_tag @user.avatar.url(:medium) %></div>
+        <div class="float-right text-right"><%= f.file_field :avatar %></div>
       </div>
     </div>
     <%= f.submit "Update", class: "btn btn-success" %>
