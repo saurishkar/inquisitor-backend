@@ -14,7 +14,8 @@
       <% if session[:current_user] %>
         <li class="nav-item dropdown mr-5">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= User.find(session[:current_user]).name %>
+            <%= render "admin/home/avatar" %></span>
+            <span class="user-name"><%= session[:current_user_name] %></span>
           </a>
           <div class="dropdown-menu mr-5" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/admin/users/<%= session[:current_user] %>/edit">My Profile</a>

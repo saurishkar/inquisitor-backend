@@ -34,6 +34,7 @@ module Admin
     def update
       @user = User.find(params[:id])
       if @user.update(permit_params)
+        set_user_session
         redirect_to edit_admin_user_path(@user), notice: 'Your details have been successfully updated'
       else
         render 'edit'
@@ -76,8 +77,9 @@ module Admin
 
       response = ApiService.post(url, config)
       status_code = response.code.to_i
-      if status_code == 200 || status_code == 202
-        redirect_to :forgot_password, alert: 'Reset password link has been sent to your email'
+      if [200, 202].includes? status_code
+        redirect_to :forgot_password,
+                    alert: 'Reset password link has been sent to your email'
       else
         flash.now[:alert] = 'FAILED'
         render 'forgot_password'
@@ -87,7 +89,8 @@ module Admin
     private
 
     def permit_params
-      params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
+      params.require(:user).permit(:email, :firstname, :lastname, :password,
+                                   :password_confirmation, :avatar)
     end
   end
 end
