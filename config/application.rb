@@ -32,4 +32,10 @@ module InquisitorBackend
   rescue StandardError => _e
     SECRETS = { pepipost_api_key: '', pepipost_url: '' }.freeze
   end
+
+  begin
+    S3_CREDENTIALS = YAML.load_file("#{Rails.root}/config/aws.yml")[Rails.env].symbolize_keys
+  rescue StandardError => _e
+    S3_CREDENTIALS = { access_key_id: '', secret_access_key: '', s3_region: '', bucket: '' }.freeze
+  end
 end
