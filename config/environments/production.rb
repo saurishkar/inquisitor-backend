@@ -92,11 +92,9 @@ Rails.application.configure do
       bucket: S3_CREDENTIALS[:bucket],
       access_key_id: S3_CREDENTIALS[:access_key_id],
       secret_access_key: S3_CREDENTIALS[:secret_access_key],
-      s3_region: S3_CREDENTIALS[:region]
+      s3_region: S3_CREDENTIALS[:s3_region]
     }
   }
-
-  # config.action_controller.asset_host = "https://s3.amazonaws.com/"
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)

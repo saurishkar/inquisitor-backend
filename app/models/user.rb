@@ -3,8 +3,9 @@
 class User < ApplicationRecord
   has_many :questions
   has_many :answers
-  has_attached_file :avatar, styles: { medium: '300x300>', thumb: '100x100>' },
-                             default_url: '/images/:style/missing.png'
+  has_attached_file :avatar,
+                    styles: { medium: '300x300>', thumb: '100x100>' },
+                    default_url: '/images/:style/missing.png'
 
   before_save :encrypt_password, :generate_api_key
 
