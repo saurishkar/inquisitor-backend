@@ -34,7 +34,7 @@ module Admin
     def update
       @user = User.find(params[:id])
       if @user.update(permit_params)
-        set_user_session
+        set_user_session if @user.id == session[:current_user]
         redirect_to edit_admin_user_path(@user), notice: 'Your details have been successfully updated'
       else
         render 'edit'
