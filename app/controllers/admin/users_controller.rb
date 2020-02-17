@@ -89,8 +89,10 @@ module Admin
     private
 
     def permit_params
-      params.require(:user).permit(:email, :firstname, :lastname, :password,
-                                   :password_confirmation, :avatar)
+      params.require(:user)
+            .permit(:email, :firstname, :lastname, :password,
+                    :password_confirmation, :avatar)
+            .select { |_k, v| v.present? }
     end
   end
 end
