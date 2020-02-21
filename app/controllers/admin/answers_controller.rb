@@ -3,11 +3,11 @@
 module Admin
   class AnswersController < ApplicationController
     def index_all
-      @answers = Answer.all
+      @answers = Answer.all.includes(:user, question: [:user])
     end
 
     def index
-      @answers = Answer.all
+      @answers = Answer.all.includes(:user, question: [:user])
     end
 
     def show
@@ -16,7 +16,7 @@ module Admin
 
     def create
       @answer = Answer.new(permit_params)
-      @answer.user_id = params[:user_id]
+      @answer.user_id = session[:current_user]
       @answer.question_id = params[:question_id]
       return redirect_to admin_answers_path if @answer.save
 

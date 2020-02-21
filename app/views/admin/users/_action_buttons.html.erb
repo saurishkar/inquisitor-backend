@@ -1,0 +1,4 @@
+<% if user.id != session[:current_user] %>
+  <a href="" class="btn btn-sm btn-outline-success">Upvote</a>
+  <a href="" class="btn btn-sm btn-outline-danger">Downvote</a>
+<% end %>
