@@ -4,6 +4,9 @@ class Answer < ApplicationRecord
   belongs_to :question
   belongs_to :user
 
+  has_many  :upvotes, as: :source
+  has_many  :downvotes, as: :source
+
   before_save :answered_by_user?
 
   def answered_by_user?

@@ -25,13 +25,20 @@
   </table>
   <% if @question.answers.length > 0 %>
     <h3>Answers</h3>
-    <% @question.answers.each do |answer| %>
-      <div class="row">
+    <% @question.answers.includes(:user).each do |answer| %>
+      <div class="row mb-4">
         <div class="col-md-12"><%= answer.description %></div>
       </div>
-      <small class="text-danger mb-4 mt-4 ">
-        <%= link_to "-#{answer.user.name}", admin_user_path(answer.user) %>
-      </small>
+      <div class="row">
+        <div class="col-md-8">
+          <%= render '/admin/users/action_buttons', user: answer.user %>
+        </div>
+        <div class="col-md-4">
+          <small class="text-danger mb-4 mt-4 float-right">
+            <%= link_to "-#{answer.user.name}", admin_user_path(answer.user) %>
+          </small>
+        </div>
+      </div>
       <hr />
     <% end %>
   <% else %>
